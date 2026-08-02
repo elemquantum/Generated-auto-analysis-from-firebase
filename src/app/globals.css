@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 231 60% 95%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100% / 0.8;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 231 48% 48%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 231 30% 88%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 231 30% 88%;
+    --muted-foreground: 225.2 38.4% 35.1%;
+    --accent: 261 41% 55%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 231 20% 80%;
+    --input: 231 20% 80%;
+    --ring: 231 48% 48%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .dark {
+    --background: 231 48% 10%;
+    --foreground: 231 60% 95%;
+    --card: 231 48% 10% / 0.8;
+    --card-foreground: 231 60% 95%;
+    --popover: 231 48% 10%;
+    --popover-foreground: 231 60% 95%;
+    --primary: 231 60% 95%;
+    --primary-foreground: 231 48% 10%;
+    --secondary: 231 30% 20%;
+    --secondary-foreground: 231 60% 95%;
+    --muted: 231 30% 20%;
+    --muted-foreground: 231 30% 65%;
+    --accent: 261 51% 65%;
+    --accent-foreground: 231 60% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 231 30% 20%;
+    --input: 231 30% 20%;
+    --ring: 261 51% 65%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .color-tunnel {
+    @apply relative w-full h-full flex items-center justify-center overflow-hidden;
+    perspective: 400px;
+  }
+  .color-tunnel-ring {
+    @apply absolute h-1 w-1 rounded-full;
+    transform-style: preserve-3d;
+    animation: wormhole-fly 3s linear infinite;
+  }
+  .color-tunnel-ring:nth-child(1) {
+    background-color: hsl(var(--primary));
+    animation-delay: 0s;
+  }
+  .color-tunnel-ring:nth-child(2) {
+    background-color: hsl(var(--accent));
+    animation-delay: -0.75s;
+  }
+  .color-tunnel-ring:nth-child(3) {
+    background-color: hsl(var(--chart-2));
+    animation-delay: -1.5s;
+  }
+  .color-tunnel-ring:nth-child(4) {
+    background-color: hsl(var(--chart-4));
+    animation-delay: -2.25s;
+  }
+}
+
+@keyframes wormhole-fly {
+  0% {
+    transform: rotate(calc(var(--i, 1) * 90deg)) translateY(0px) translateZ(0px) scale(0.1);
+    opacity: 0.1;
+  }
+  10% {
+     opacity: 1;
+  }
+  100% {
+    transform: rotate(calc(var(--i, 1) * 90deg)) translateY(0px) translateZ(400px) scale(1);
+    opacity: 0;
+  }
+}
