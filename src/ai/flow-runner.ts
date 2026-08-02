@@ -10,8 +10,9 @@ import { ai } from '@/ai/genkit';
  * Gemini 1.5 Pro is the heavy-lifter, falling back to 1.5 Flash.
  */
 const modelPreferences: ModelReference<any>[] = [
-  googleAI.model('gemini-1.5-pro'),
-  googleAI.model('gemini-1.5-flash'),
+  googleAI.model('gemini-2.5-pro'),
+  googleAI.model('gemini-2.5-flash'),
+  googleAI.model('gemini-2.0-flash'),
 ];
 
 /**
