@@ -6,6 +6,10 @@ require('dotenv').config();
 
 const nextConfig: NextConfig = {
   output: "standalone",
+  env: {
+    GEMINI_API_KEY: process.env.GEMINI_API_KEY || process.env.gemini_api_key,
+    NEXT_PUBLIC_FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY || process.env.firebase_api_key,
+  },
   /* config options here */
   typescript: {
     ignoreBuildErrors: true,
